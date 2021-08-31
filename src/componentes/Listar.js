@@ -85,7 +85,7 @@ class Listar extends React.Component {
                         <td>{usuario.dni}</td>
                         <td> 
                             <div className="btn-group" role="group" aria-label="">
-                                <Link className="btn btn-warning" to={"/Editar/"+usuario.id} 
+                                <Link className="btn btn-primary" to={"/Editar/"+usuario.id} 
 
                                 
                                 >Editar</Link>
