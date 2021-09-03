@@ -1,2 +1,2 @@
-const api="http://localhost/crudreact/";
+const api = "http://localhost:8080/crudreact/";
 export default api;
