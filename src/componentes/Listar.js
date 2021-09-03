@@ -69,6 +69,8 @@ class Listar extends React.Component {
                 <thead>
                     <tr>
                         <th>ID</th>
+                        <th>Usuario</th>
+                        <th>Contraseña</th>
                         <th>Nombre</th>
                         <th>Apellido</th>
                         <th>DNI</th>
@@ -80,6 +82,8 @@ class Listar extends React.Component {
                         (usuario)=>(
                             <tr key={usuario.id}>
                         <td>{usuario.id}</td>
+                        <td>{usuario.userName}</td>
+                        <td>{usuario.password}</td>
                         <td>{usuario.nombre}</td>
                         <td>{usuario.apellido}</td>
                         <td>{usuario.dni}</td>

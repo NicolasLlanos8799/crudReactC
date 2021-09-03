@@ -6,6 +6,8 @@ class Crear extends React.Component {
     constructor(props) {
         super(props);
         this.state = { 
+            userName:"",
+            password:"",
             nombre:"",
             apellido:"",
             dni:"",
@@ -31,10 +33,12 @@ class Crear extends React.Component {
         u.preventDefault();
        
 
-        const{nombre,apellido,dni}= this.state;
+        const{userName,password,nombre,apellido,dni}= this.state;
       
 
         var errores=[];
+        if(!userName)errores.push("error_userName");
+        if(!password)errores.push("error_password");
         if(!nombre)errores.push("error_nombre");
         if(!apellido)errores.push("error_apellido");
         if(!dni)errores.push("error_dni");
@@ -43,7 +47,7 @@ class Crear extends React.Component {
         if (errores.length>0)return false;
 
 
-        var datosEnviar= {nombre:nombre, apellido:apellido, dni:dni}
+        var datosEnviar= {userName:userName, password:password, nombre:nombre, apellido:apellido, dni:dni}
 
 
         fetch(Api+"?insertar=1",{
@@ -67,7 +71,7 @@ class Crear extends React.Component {
 
     render() { 
 
-        const{nombre,apellido,dni}= this.state;
+        const{userName,password,nombre,apellido,dni}= this.state;
 
         return ( 
             <div className="card">
@@ -76,6 +80,20 @@ class Crear extends React.Component {
                 </div>
                 <div className="card-body">
                     <form onSubmit={this.enviarDatos}>
+
+                         <div className="form-group">
+                          <label htmlFor="">Usuario:</label>
+                          <input required type="text" name="userName" id="userName" value={userName} onChange={this.cambioValor} className={ ((this.verificarError("error_userName"))?"is-invalid":"" )+" form-control"} placeholder="Ingresa el usuario" aria-describedby="helpId"/>
+                          <small id="helpId" className="invalid-feedback"></small>
+                         
+                        </div>
+                        <div className="form-group">
+                          <label htmlFor="">Contraseña:</label>
+                          <input required type="text" name="password" id="password" value={password} onChange={this.cambioValor} className={ ((this.verificarError("error_password"))?"is-invalid":"" )+" form-control"} placeholder="Ingresa contraseña del usuario" aria-describedby="helpId"/>
+                          <small id="helpId" className="invalid-feedback"></small>
+                         
+                        </div>
+
                           
                         <div className="form-group">
                           <label htmlFor="">Nombre:</label>

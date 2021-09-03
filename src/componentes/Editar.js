@@ -22,10 +22,10 @@ class Editar extends React.Component {
     enviarDatos = (u) =>{
         u.preventDefault();
        
-        const{id,nombre,apellido,dni}= this.state.usuario;
+        const{id,userName, password,nombre,apellido,dni}= this.state.usuario;
         
 
-        var datosEnviar= {id:id, nombre:nombre, apellido:apellido, dni:dni}
+        var datosEnviar= {id:id, userName:userName, password:password, nombre:nombre, apellido:apellido, dni:dni}
 
 
         fetch(Api+"?actualizar=1",{
@@ -84,12 +84,30 @@ class Editar extends React.Component {
                 <form onSubmit={this.enviarDatos}>
                
 
-                <div className="form-group">
-                  <label htmlFor="">ID:</label>
-                  <input type="text" readOnly className="form-control" value={usuario.id}  onChange={this.cambioValor} name="id" id="id" aria-describedby="helpId" placeholder=""/>
-                  <small id="helpId" className="form-text text-muted">ID del usuario</small>
-                </div>
-                          
+                            <div className="form-group">
+                            <label htmlFor="">ID:</label>
+                            <input type="text" readOnly className="form-control" value={usuario.id}  onChange={this.cambioValor} name="id" id="id" aria-describedby="helpId" placeholder=""/>
+                            <small id="helpId" className="form-text text-muted">ID del usuario</small>
+                            <br></br>
+                            </div>
+
+                            <div className="form-group">
+                             <br></br>
+                            <label htmlFor="">Usuario:</label>
+                            <input type="text" name="userName" id="userName" value={usuario.userName} onChange={this.cambioValor} className="form-control" placeholder="" aria-describedby="helpId"/>
+                            <small id="helpId" className="text-muted">Ingresa el usuario</small>
+                           
+                          </div>
+
+                          <div className="form-group">
+                             <br></br>
+                            <label htmlFor="">Contraseña:</label>
+                            <input type="text" name="password" id="password" value={usuario.password} onChange={this.cambioValor} className="form-control" placeholder="" aria-describedby="helpId"/>
+                            <small id="helpId" className="text-muted">Ingresa la contraseña del usuario</small>
+                           
+                          </div>
+
+
                           <div className="form-group">
                              <br></br>
                             <label htmlFor="">Nombre:</label>
